@@ -15,7 +15,6 @@ environments:
       repository: 'https://github.com/env0/templates'
       path: 'misc/null-resource'
       revision: 'master'
-      requiresApproval: 'true'
     needs:
       - service1
   service3:
