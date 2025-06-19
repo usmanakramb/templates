@@ -2,7 +2,7 @@ environments:
   rootService1:
     name: nullService1
     templateName: 'null-resource'
-    requiresApproval: 'true'
+    requiresApproval: true
   rootService2:
     name: nullService2
     templateName: 'null-resource'
