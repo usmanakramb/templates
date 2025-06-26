@@ -10,3 +10,9 @@ environments:
     requiresApproval: true
     needs:
       - rootService1
+  rootService3:
+    name: nullService3
+    templateName: 'null-resource'
+    requiresApproval: true
+    needs:
+      - rootService2
