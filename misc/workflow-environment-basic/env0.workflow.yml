@@ -11,7 +11,7 @@ environments:
     needs:
       - rootService1
   rootService3:
-    name: nullService3
+    name: nullService4
     templateName: 'null-resource'
     requiresApproval: true
     needs:
