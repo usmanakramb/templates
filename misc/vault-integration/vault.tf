@@ -19,10 +19,6 @@ variable "env0_api_secret" {
   type    = string
 }
 
-variable "vault_token" {
-  type    = string
-}
-
 provider "env0" {
   api_key    = var.env0_api_key
   api_secret = var.env0_api_secret
@@ -30,8 +26,7 @@ provider "env0" {
 
 provider "vault" {
   address          = "http://13.221.115.246:8200"
-  token            = var.vault_token
-  skip_child_token = true
+#  skip_child_token = true
 }
 
 resource "env0_vault_oidc_credentials" "demo" {
