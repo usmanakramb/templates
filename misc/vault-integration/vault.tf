@@ -33,7 +33,7 @@ resource "env0_vault_oidc_credentials" "demo" {
 }
 
 resource "vault_mount" "kvv2" {
-  path        = "secret"
+  path        = "secret/creds"
   type        = "kv"
   options     = { version = "2" }
   description = "KV Version 2 secret engine mount"
