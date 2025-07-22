@@ -10,7 +10,7 @@ fi
 
 echo "Logging in to Vault"
 
-echo VAULT_TOKEN=$(./vault write auth/jwt/login role="${VAULT_ROLE}" jwt="${ENV0_OIDC_TOKEN}" -format=json | jq --raw-output '.auth.client_token') >> $ENV0_ENV
+export VAULT_TOKEN=$(./vault write auth/jwt/login role="${VAULT_ROLE}" jwt="${ENV0_OIDC_TOKEN}" -format=json | jq --raw-output '.auth.client_token')
 
 echo $VAULT_TOKEN
 
@@ -19,5 +19,5 @@ echo "Running some Vault commands"
 ./vault kv put -mount=secret creds passcode=my-password
 ./vault kv get -mount=secret -field=passcode creds
 
-#export TERRAFORM_VAULT_AUTH_JWT=$ENV0_OIDC_TOKEN >> $ENV0_ENV
+echo TERRAFORM_VAULT_AUTH_JWT=$ENV0_OIDC_TOKEN >> $ENV0_ENV
         
