@@ -29,7 +29,7 @@ provider "vault" {
   auth_login_jwt {
     role           = "vault_role"
   }
-#  skip_child_token = true
+  skip_child_token = true
 }
 
 resource "env0_vault_oidc_credentials" "demo" {
