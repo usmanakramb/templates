@@ -28,7 +28,7 @@ provider "vault" {
   address          = "http://13.221.115.246:8200"
 #  skip_child_token = true
   auth_login_jwt {
-    role           = "vault_role"
+    role           = "provider_role"
   }
 }
 
