@@ -40,7 +40,26 @@ resource "env0_vault_oidc_credentials" "demo" {
   jwt_auth_backend_path = "jwt"
 }
 
-data "vault_kv_secret_v2" "my_secret" {
-  mount = "secret"
-  name  = "creds"
+resource "vault_mount" "kvv2" {
+  path        = "secret"
+  type        = "kv"
+  options     = { version = "2" }
+  description = "KV Version 2 secret engine mount"
+}
+
+resource "vault_kv_secret_v2" "example" {
+  mount               = vault_mount.kvv2.path
+  name                = "provider"
+  delete_all_versions = true
+  data_json = jsonencode(
+    {
+      zip = "zap",
+      foo = "bar"
+    }
+  )
+}
+
+data "vault_kv_secret_v2" "example" {
+  mount = vault_mount.kvv2.path
+  name  = vault_kv_secret_v2.example.name
 }
