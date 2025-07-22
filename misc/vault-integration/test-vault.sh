@@ -19,5 +19,5 @@ echo "Running some Vault commands"
 ./vault kv put -mount=secret creds passcode=my-password
 ./vault kv get -mount=secret -field=passcode creds
 
-#export TERRAFORM_VAULT_AUTH_JWT=$ENV0_OIDC_TOKEN
+export TERRAFORM_VAULT_AUTH_JWT=$ENV0_OIDC_TOKEN >> $ENV0_ENV
         
