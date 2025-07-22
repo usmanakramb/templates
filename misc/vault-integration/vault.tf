@@ -29,7 +29,7 @@ resource "env0_vault_oidc_credentials" "demo" {
   address               = "http://ab2fe5d8c6c3642cf893184fc93d6be7-1541439417.us-east-1.elb.amazonaws.com:8200/"
   version               = "1.18.1"
   role_name             = "prod-env0-my-org-role"
-  jwt_auth_backend_path = "env0-jwt"
+  jwt_auth_backend_path = "env0-prod-jwt"
 }
 
 resource "vault_mount" "kvv2" {
