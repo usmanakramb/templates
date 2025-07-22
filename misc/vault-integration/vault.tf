@@ -24,14 +24,6 @@ provider "env0" {
   api_secret = var.env0_api_secret
 }
 
-provider "vault" {
-  address          = "http://13.221.115.246:8200"
-#  skip_child_token = true
-  auth_login_jwt {
-    role           = "provider_role"
-  }
-}
-
 resource "env0_vault_oidc_credentials" "demo" {
   name                  = "demo"
   address               = "http://13.221.115.246:8200"
