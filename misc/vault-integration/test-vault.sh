@@ -16,6 +16,6 @@ echo $VAULT_TOKEN
 
 echo "Running some Vault commands"
 
-./vault kv put -mount=jwt creds passcode=my-password
-./vault kv get -mount=jwt -field=passcode creds
+./vault kv put -mount=secret creds passcode=my-password
+./vault kv get -mount=secret -field=passcode creds
         
