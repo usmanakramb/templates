@@ -11,8 +11,10 @@ echo "Logging in to Vault"
 
 export VAULT_TOKEN=$(./vault write auth/env0-jwt/login role="${VAULT_ROLE}" jwt="${ENV0_OIDC_TOKEN}" -format=json | jq --raw-output '.auth.client_token')
 
+echo $VAULT_TOKEN
+
 echo "Running some Vault commands"
 
-./vault kv put -mount=secrets-for-env0 creds passcode=my-long-passcode
-./vault kv get -mount=secrets-for-env0 -field=passcode creds
+./vault kv put -mount=jwt creds passcode=my-password
+./vault kv get -mount=jwt -field=passcode creds
         
