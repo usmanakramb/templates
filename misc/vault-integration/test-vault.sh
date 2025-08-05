@@ -8,16 +8,16 @@ if [[ -z "$VAULT_ADDR" || -z "$VAULT_ROLE" ]]; then
 fi
 
 
-echo "Logging in to Vault"
+#echo "Logging in to Vault"
 
-export VAULT_TOKEN=$(./vault write auth/env0-prod-jwt/login role="${VAULT_ROLE}" jwt="${ENV0_OIDC_TOKEN}" -format=json | jq --raw-output '.auth.client_token')
+#export VAULT_TOKEN=$(./vault write auth/env0-prod-jwt/login role="${VAULT_ROLE}" jwt="${ENV0_OIDC_TOKEN}" -format=json | jq --raw-output '.auth.client_token')
 
 echo $VAULT_TOKEN
 
 echo "Running some Vault commands"
 
-#./vault kv put -mount=secret creds passcode=my-password
-#./vault kv get -mount=secret -field=passcode creds
+./vault kv put -mount=secret creds passcode=my-password
+./vault kv get -mount=secret -field=passcode creds
 
-echo TERRAFORM_VAULT_AUTH_JWT=$ENV0_OIDC_TOKEN >> $ENV0_ENV
+#echo TERRAFORM_VAULT_AUTH_JWT=$ENV0_OIDC_TOKEN >> $ENV0_ENV
         
