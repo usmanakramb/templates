@@ -24,34 +24,43 @@ provider "env0" {
   api_secret = var.env0_api_secret
 }
 
-resource "env0_vault_oidc_credentials" "demo" {
-  name                  = "demo"
-  address               = "http://ab2fe5d8c6c3642cf893184fc93d6be7-1541439417.us-east-1.elb.amazonaws.com:8200/"
-  version               = "1.18.1"
-  role_name             = "prod-env0-my-org-role"
-  jwt_auth_backend_path = "env0-prod-jwt"
+provider "vault" {
+  address = "http://ab2fe5d8c6c3642cf893184fc93d6be7-1541439417.us-east-1.elb.amazonaws.com:8200/"
+#  skip_child_token = true
 }
 
-resource "vault_mount" "kvv2" {
-  path        = "secret/creds"
-  type        = "kv"
-  options     = { version = "2" }
-  description = "KV Version 2 secret engine mount"
-}
+#resource "env0_vault_oidc_credentials" "demo" {
+#  name                  = "demo"
+#  address               = "http://ab2fe5d8c6c3642cf893184fc93d6be7-1541439417.us-east-1.elb.amazonaws.com:8200/"
+#  version               = "1.18.1"
+#  role_name             = "prod-env0-my-org-role"
+#  jwt_auth_backend_path = "env0-prod-jwt"
+#}
 
-resource "vault_kv_secret_v2" "example" {
-  mount               = vault_mount.kvv2.path
-  name                = "provider"
-  delete_all_versions = true
-  data_json = jsonencode(
-    {
-      zip = "zap",
-      foo = "bar"
-    }
-  )
-}
+#resource "vault_mount" "kvv2" {
+#  path        = "secret/creds"
+#  type        = "kv"
+#  options     = { version = "2" }
+#  description = "KV Version 2 secret engine mount"
+#}
+
+#resource "vault_kv_secret_v2" "example" {
+#  mount               = vault_mount.kvv2.path
+#  name                = "provider"
+#  delete_all_versions = true
+#  data_json = jsonencode(
+#    {
+#      zip = "zap",
+#      foo = "bar"
+#    }
+#  )
+#}
 
 data "vault_kv_secret_v2" "example" {
-  mount = vault_mount.kvv2.path
-  name  = vault_kv_secret_v2.example.name
+  path = "secrets-for-env0/creds"
+}
+
+output "myapp_password" {
+  value = data.vault_kv_secret_v2.example.data["passcode"]
+  sensitive = true
 }
