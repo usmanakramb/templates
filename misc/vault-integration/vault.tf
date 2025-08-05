@@ -56,11 +56,11 @@ provider "vault" {
 #  )
 #}
 
-data "vault_kv_secret_v2" "example" {
+data "vault_kv_secret" "example" {
   path = "secrets-for-env0/creds"
 }
 
 output "myapp_password" {
-  value = data.vault_kv_secret_v2.example.data["passcode"]
+  value = data.vault_kv_secret.example.data["passcode"]
   sensitive = true
 }
