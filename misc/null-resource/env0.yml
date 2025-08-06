@@ -1,0 +1,23 @@
+environments:
+  workflow-mig1:
+    name: workflow-mig1
+    vcs:
+      type: terraform
+      terraformVersion: 1.5.7
+      repository: https://github.com/usmanakramb/templates
+      path: misc/null-resource
+      githubInstallationId: 60976149
+    revision: master
+    workspace: workflow-mig1-39074174
+    needs:
+  workflow-mig2:
+    name: workflow-mig2
+    vcs:
+      type: terraform
+      terraformVersion: 1.5.7
+      repository: https://github.com/usmanakramb/templates
+      path: misc/null-resource
+      githubInstallationId: 60976149
+    revision: master
+    workspace: workflow-mig2-72662320
+    needs:
