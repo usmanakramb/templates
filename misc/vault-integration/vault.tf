@@ -19,6 +19,14 @@ variable "env0_api_secret" {
   type    = string
 }
 
+variable "SET_VAR" {
+  type    = bool
+}
+
+variable "ENV_VAR" {
+  type    = bool
+}
+
 provider "env0" {
   api_key    = var.env0_api_key
   api_secret = var.env0_api_secret
