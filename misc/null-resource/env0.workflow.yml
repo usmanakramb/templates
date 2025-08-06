@@ -20,4 +20,4 @@ environments:
     revision: master
     workspace: workflow-mig2-72662320
     needs: 
-        -  workflow-mig1
+      - workflow-mig1
