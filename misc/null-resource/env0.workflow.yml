@@ -9,7 +9,6 @@ environments:
       githubInstallationId: 60976149
     revision: master
     workspace: workflow-mig1-39074174
-    needs:
   workflow-mig2:
     name: workflow-mig2
     vcs:
@@ -20,4 +19,3 @@ environments:
       githubInstallationId: 60976149
     revision: master
     workspace: workflow-mig2-72662320
-    needs:
