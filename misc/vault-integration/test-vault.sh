@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-# if [[ -z "$VAULT_ADDR" || -z "$VAULT_NAMESPACE" || -z "$VAULT_ROLE" ]]; then
-if [[ -z "$VAULT_ADDR" || -z "$VAULT_ROLE" ]]; then
-    echo "MISSING REQUIRED VARIABLES: VAULT_ROLE, VAULT_ADDR"
-    exit 1
-fi
+#if [[ -z "$VAULT_ADDR" || -z "$VAULT_NAMESPACE" || -z "$VAULT_ROLE" ]]; then
+#if [[ -z "$VAULT_ADDR" || -z "$VAULT_ROLE" ]]; then
+#    echo "MISSING REQUIRED VARIABLES: VAULT_ROLE, VAULT_ADDR"
+#    exit 1
+#fi
 
 
 #echo "Logging in to Vault"
