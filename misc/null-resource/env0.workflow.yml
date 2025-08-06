@@ -19,4 +19,5 @@ environments:
       githubInstallationId: 60976149
     revision: master
     workspace: workflow-mig2-72662320
-    needs: workflow-mig1
+    needs: 
+        -  workflow-mig1
